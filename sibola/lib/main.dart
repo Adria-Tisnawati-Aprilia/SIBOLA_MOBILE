@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:sibola/constrain.dart';
-import 'package:sibola/screens/homepage.dart';
+import 'package:sibola/screens/dashboard.dart';
+import 'package:sibola/screens/splash_screens.dart';
+
 void main() {
+  //SystemChrome.setSystemuUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: Colors.transparent),
   runApp(const MyApp());
 }
 
@@ -18,7 +22,7 @@ class MyApp extends StatelessWidget {
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: HomePage(),
+      home: SplashScreens(),
     );
   }
 }

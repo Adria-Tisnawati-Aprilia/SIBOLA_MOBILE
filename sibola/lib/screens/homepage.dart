@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final String? url = 'http://192.168.100.105:8000/api/arena/';
+  final String? url = 'http://172.20.10.2:8000/api/arena/';
 
   //android emulator http://10.0.2.2
   Future<List<dynamic>> getArena() async {
@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future deleteArena(String arena) async {
-    String url = "http://192.168.100.105:8000/api/arena/" + arena;
+    String url = "http://172.20.10.2:8000/api/arena/" + arena;
 
     var response = await http.delete(Uri.parse(url));
     //return json.decode(response.body);
@@ -86,7 +86,7 @@ class _HomePageState extends State<HomePage> {
                                       Align(
                                         alignment: Alignment.topLeft,
                                         child: Text(
-                                          snapshot.data[index]['id'],
+                                          snapshot.data[index]['kode_arena'],
                                           style: TextStyle(
                                               fontSize: 20.0,
                                               fontWeight: FontWeight.bold),
@@ -95,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                                       Align(
                                         alignment: Alignment.topLeft,
                                         child:
-                                            Text(snapshot.data[index]['nama arena']),
+                                            Text(snapshot.data[index]['nama_arena']),
                                       ),
                                       Row(
                                         mainAxisAlignment:
@@ -118,8 +118,7 @@ class _HomePageState extends State<HomePage> {
                                             GestureDetector(
                                                 onTap: () {
                                                   deleteArena(snapshot
-                                                          .data[index]['id']
-                                                          .toString())
+                                                          .data[index]['kode_arena'])
                                                       .then((value) {
                                                     setState(() {});
                                                     ScaffoldMessenger.of(
