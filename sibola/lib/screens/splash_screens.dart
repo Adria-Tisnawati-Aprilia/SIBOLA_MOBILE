@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sibola/auth/login.dart';
 
 import 'homepage.dart';
 
@@ -12,16 +14,29 @@ class SplashScreens extends StatefulWidget {
 }
 
 class _SplashScreensState extends State<SplashScreens> {
-  
-  @override
   void initState() {
-    
     super.initState();
-    Timer(
-      Duration(seconds: 3),
-      () => Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => HomePage())));
+    cek();
   }
+
+  cek() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    var loading = const Duration(seconds: 3);
+    String? value = pref.getString("login");
+    return Timer(loading, () {
+      if (value != null){
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => HomePage()), (route) => false);
+      }else{
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginPage()));
+      }
+    });
+    if (value != null) {
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => HomePage()), (route) => false);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

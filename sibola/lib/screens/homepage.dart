@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sibola/auth/login.dart';
 import 'package:sibola/screens/add_arena.dart';
 import 'package:sibola/screens/arena_detail.dart';
 import 'package:sibola/screens/edit_arena.dart';
@@ -43,6 +45,13 @@ class _HomePageState extends State<HomePage> {
         ),
         appBar: AppBar(
           title: Text('SIBOLA'),
+          actions: <Widget>[
+            IconButton(onPressed: ()async{
+            SharedPreferences pref = await SharedPreferences.getInstance();
+            await pref.clear();
+            Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context)=>LoginPage()), (route) => false);
+            }, icon: Icon(Icons.logout)),
+          ],
         ),
         body: FutureBuilder(
             future: getArena(),

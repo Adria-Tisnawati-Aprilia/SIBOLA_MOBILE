@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
+import 'package:sibola/screens/homepage.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -14,20 +15,7 @@ class LoginPage extends StatefulWidget {
 SharedPreferences? localStorage;
 
 class _LoginPageState extends State<LoginPage> {
-  void initState() {
-    super.initState();
-    cek();
-  }
-
-  cek() async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-
-    String? value = pref.getString("login");
-    if (value != null) {
-      Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => Home()), (route) => false);
-    }
-  }
+  
 
   TextEditingController emailController = TextEditingController();
   TextEditingController pwdController = TextEditingController();
@@ -139,6 +127,6 @@ class _LoginPageState extends State<LoginPage> {
 
     await pref.setString("login", token);
     Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => Home()), (route) => false);
+        MaterialPageRoute(builder: (context) => HomePage()), (route) => false);
   }
 }
