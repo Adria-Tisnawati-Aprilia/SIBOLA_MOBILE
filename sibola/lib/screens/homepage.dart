@@ -45,13 +45,6 @@ class _HomePageState extends State<HomePage> {
         ),
         appBar: AppBar(
           title: Text('SIBOLA'),
-          actions: <Widget>[
-            IconButton(onPressed: ()async{
-            SharedPreferences pref = await SharedPreferences.getInstance();
-            await pref.clear();
-            Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context)=>LoginPage()), (route) => false);
-            }, icon: Icon(Icons.logout)),
-          ],
         ),
         body: FutureBuilder(
             future: getArena(),

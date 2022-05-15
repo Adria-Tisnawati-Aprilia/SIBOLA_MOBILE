@@ -3,8 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sibola/auth/login.dart';
-
-import 'homepage.dart';
+import 'package:sibola/screens/dashboard.dart';
 
 class SplashScreens extends StatefulWidget {
   const SplashScreens({Key? key}) : super(key: key);
@@ -27,7 +26,7 @@ class _SplashScreensState extends State<SplashScreens> {
     return Timer(loading, () {
       if (value != null) {
         Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => HomePage()),
+            MaterialPageRoute(builder: (context) => Dashboard()),
             (route) => false);
       } else {
         Navigator.push(
