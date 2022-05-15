@@ -31,10 +31,6 @@ class _SplashScreensState extends State<SplashScreens> {
       Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginPage()));
       }
     });
-    if (value != null) {
-      Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => HomePage()), (route) => false);
-    }
   }
 
   @override
