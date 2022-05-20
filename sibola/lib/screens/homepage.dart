@@ -17,7 +17,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final String? url = 'http://172.20.10.2:8000/api/arena/';
+  final String? url = 'http://192.168.167.249:8000/api/arena/';
 
   //android emulator http://10.0.2.2
   Future<List<dynamic>> getArena() async {
@@ -45,6 +45,17 @@ class _HomePageState extends State<HomePage> {
         ),
         appBar: AppBar(
           title: Text('SIBOLA'),
+          actions: <Widget>[
+          IconButton(
+              onPressed: () async {
+                SharedPreferences pref = await SharedPreferences.getInstance();
+                await pref.clear();
+                Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(builder: (context) => LoginPage()),
+                    (route) => false);
+              },
+              icon: Icon(Icons.logout)),
+        ],
         ),
         body: FutureBuilder(
             future: getArena(),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sibola/auth/login.dart';
 import 'package:sibola/screens/dashboard.dart';
+import 'package:sibola/screens/homepage.dart';
 
 class SplashScreens extends StatefulWidget {
   const SplashScreens({Key? key}) : super(key: key);
@@ -26,7 +27,7 @@ class _SplashScreensState extends State<SplashScreens> {
     return Timer(loading, () {
       if (value != null) {
         Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => Dashboard()),
+            MaterialPageRoute(builder: (context) => HomePage()),
             (route) => false);
       } else {
         Navigator.push(
@@ -61,20 +62,11 @@ class _SplashScreensState extends State<SplashScreens> {
                     height: 300.0,
                     width: 300.0,
                   ),
-                  Text(
-                    "Sistem Informasi Booking Lapangan Indramayu",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.0,
-                    ),
-                  ),
-                ],
-              ),
-              CircularProgressIndicator(),
-            ],
-          )),
+              ],
+            ),
+          ],
+        )
+      ),
     );
   }
 }

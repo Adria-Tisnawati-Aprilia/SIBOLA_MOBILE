@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:sibola/screens/dashboard.dart';
+import 'package:sibola/screens/homepage.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
 
   void login() async {
     var response = await http.post(
-        Uri.parse("http://192.168.167.207:8000/login"),
+        Uri.parse("http://192.168.167.249:8000/login"),
         body: ({
           "email": emailController.text,
           "password": pwdController.text
@@ -125,6 +126,6 @@ class _LoginPageState extends State<LoginPage> {
 
     await pref.setString("login", token);
     Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => Dashboard()), (route) => false);
+        MaterialPageRoute(builder: (context) => HomePage()), (route) => false);
   }
 }
