@@ -15,11 +15,10 @@ class EditArena extends StatelessWidget {
   TextEditingController _alamatController = TextEditingController();
   Future updateArena() async {
     final response = await http.put(
-        Uri.parse("http://172.20.10.2:8000/api/arena/" +
+        Uri.parse("http://192.168.167.249:8000/api/arena/" +
             arena['kode_arena'].toString()),
         body: {
           "kode_arena": _kodeController.text.toString(),
-          "id_users": _idController.text.toString(),
           "nama_arena": _namaController.text.toString(),
           "alamat": _alamatController.text.toString(),
         });
@@ -45,16 +44,6 @@ class EditArena extends StatelessWidget {
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return "Please enter Kode Arena";
-                  }
-                  return null;
-                },
-              ),
-              TextFormField(
-                controller: _idController..text = arena['id_users'],
-                decoration: InputDecoration(labelText: "Id Arena"),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return "Please enter Id Arena";
                   }
                   return null;
                 },

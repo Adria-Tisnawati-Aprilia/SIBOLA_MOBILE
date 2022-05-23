@@ -13,7 +13,7 @@ class  AddArena extends StatelessWidget {
   
   Future saveArena() async {
     final response = 
-      await http.post(Uri.parse("http://172.20.10.2:8000/api/arena"), body: {
+      await http.post(Uri.parse("http://192.168.167.249:8000/api/arena"), body: {
         "kode_arena": _kodeController.text.toString(),
         "id_users": _idController.text.toString(),
         "nama_arena": _namaController.text.toString(),
